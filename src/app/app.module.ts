@@ -6,12 +6,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // material
 import { MaterialModule } from './core/material/material.module';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { InicioComponent } from './core/inicio/inicio.component';
+import { CasosJuridicosComponent } from './core/casos-juridicos/casos-juridicos.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    InicioComponent,
+    CasosJuridicosComponent
   ],
   imports: [
     BrowserModule,
