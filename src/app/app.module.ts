@@ -8,8 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './core/material/material.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { InicioComponent } from './core/inicio/inicio.component';
-import { CasosJuridicosComponent } from './core/casos-juridicos/casos-juridicos.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { CasosJuridicosComponent } from './components/casos-juridicos/casos-juridicos.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
 
 
 
@@ -19,7 +20,8 @@ import { CasosJuridicosComponent } from './core/casos-juridicos/casos-juridicos.
     NavbarComponent,
     FooterComponent,
     InicioComponent,
-    CasosJuridicosComponent
+    CasosJuridicosComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
