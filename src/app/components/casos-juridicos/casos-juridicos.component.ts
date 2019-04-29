@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CasosJuridicos } from '../../core/interfaces/casos-juridicos.interface';
+import { CasosJuridicosService } from '../../core/services/casos-juridicos.service';
+
 
 @Component({
   selector: 'app-casos-juridicos',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CasosJuridicosComponent implements OnInit {
 
-  constructor() { }
+  formNacformCasosJuridicosido: FormGroup;
+  casosJuridicos: CasosJuridicos[] = [];
+
+  constructor(private casosJuridicosServices: CasosJuridicosService) {
+  }
 
   ngOnInit() {
+    this.casosJuridicosServices.getCasosJuridicos()
+      .subscribe(data => {
+        console.log(data);
+        data.forEach(element => {
+          if (element !== null) {
+            this.casosJuridicos.push(element);
+          }
+        });
+      });
+    console.log(this.casosJuridicos);
   }
 
 }

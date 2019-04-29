@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AppRoutes } from './app.routes';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
 // configuracion de animaciones
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // material
@@ -11,7 +12,10 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { CasosJuridicosComponent } from './components/casos-juridicos/casos-juridicos.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { CasosJuridicosService } from './core/services/casos-juridicos.service';
 
+// servicios
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,9 +30,12 @@ import { FormularioComponent } from './components/formulario/formulario.componen
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    AppRoutes,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CasosJuridicosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
