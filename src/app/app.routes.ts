@@ -10,7 +10,7 @@ import { CasosJuridicosComponent } from './components/casos-juridicos/casos-juri
 const routes: Routes = [
     { path: '', component: InicioComponent },
     { path: 'caso-juridico', component: CasosJuridicosComponent },
-    { path: 'caso-juridico/formulario/:codigo', component: FormularioComponent },
+    { path: 'caso-juridico/:codigo', component: FormularioComponent },
     { path: '**', component: InicioComponent },
 ];
 

@@ -20,14 +20,12 @@ export class CasosJuridicosComponent implements OnInit {
   ngOnInit() {
     this.casosJuridicosServices.getCasosJuridicos()
       .subscribe(data => {
-        console.log(data);
         data.forEach(element => {
           if (element !== null) {
             this.casosJuridicos.push(element);
           }
         });
       });
-    console.log(this.casosJuridicos);
   }
 
 }

@@ -54,16 +54,16 @@
 </div>
 <br>
 <!-- Pasos para seguir a un caso. -->
-<div class="container marketing p-5">
+<div id="como-funciona" class="container marketing p-5 mt-3">
     <h2 class="text-center">Como funciona Llanos & Asociados</h2>
-    <div class="row">
+    <div class="row text-center">
         <div class="col-lg-4">
             <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
         <image xlink:href="../../../../assets/images/opcion-1.png" class="align-middle" width="140" height="140" />
       </svg>
             <h2>Paso 1.</h2>
             <p>Selecciona tu tipo de caso y contesta las preguntas que apareceran a continuación.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">Selecciona el caso »</a></p>
+            <p><a class="btn btn-dark" href="#caso-juridico" role="button">Selecciona el caso »</a></p>
         </div>
         <!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -73,7 +73,7 @@
       </svg>
             <h2>Paso 2.</h2>
             <p>Llena el formulario con una descripcion general de tu caso y luego envialo.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">Selecciona el caso »</a></p>
+            <p><a class="btn btn-dark" [routerLink]="['caso-juridico']" role="button">Selecciona el caso »</a></p>
         </div>
         <!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -82,7 +82,7 @@
       </svg>
             <h2>Paso 3.</h2>
             <p>Nosotros nos cantactaremos contigo via correo o llamada telefonica.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">Selecciona el caso »</a></p>
+            <p><a class="btn btn-dark" [routerLink]="['caso-juridico']" role="button">Selecciona el caso »</a></p>
         </div>
         <!-- /.col-lg-4 -->
     </div>
@@ -91,7 +91,7 @@
 <div class="informacion text-center text-white p-4">
     <h2>La clave para solucionar su caso, es estar bien asesorado.</h2>
     <h3>Llanos y Asociados te permite recibir tu consulta, escribenos y nosotros nos pondremos en contacto.</h3>
-    <a class="btn btn-info">Selecciona tu caso »</a>
+    <a id="caso-juridico" class="btn btn-info" [routerLink]="['caso-juridico']">Selecciona tu caso »</a>
 </div>
 
 <app-casos-juridicos></app-casos-juridicos>
