@@ -30,7 +30,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <mat-form-field class="full ml-2 ">
-                            <input matInput placeholder="Número de celular" required maxlength="15" formControlName="celular">
+                            <input matInput placeholder="Número de celular" type="number" required maxlength="15" formControlName="celular">
                         </mat-form-field>
                         <mat-error *ngIf="formularioCliente.controls['celular'].hasError('required')">
                             ¡Debe ingresar un numero de celular de referencia!
@@ -43,7 +43,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <mat-form-field class="full ml-2 ">
-                            <input matInput placeholder="Correo electronico" required maxlength="30" formControlName="correo">
+                            <input matInput placeholder="Correo electronico" type="email" required maxlength="30" formControlName="correo">
                         </mat-form-field>
                         <mat-error *ngIf="formularioCliente.controls['correo'].hasError('required')">
                             ¡Debe Ingresar un correo electronico!
@@ -64,7 +64,7 @@
                         </mat-error>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!formularioCliente.valid">Enviar la
+                <button class="btn btn-primary btn-lg btn-block" (click)="guardar()" [disabled]="!formularioCliente.valid">Enviar la
           información</button>
             </form>
         </div>
