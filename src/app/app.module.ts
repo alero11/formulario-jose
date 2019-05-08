@@ -16,6 +16,7 @@ import { CasosJuridicosService } from './core/services/casos-juridicos.service';
 
 // servicios
 import { HttpClientModule } from '@angular/common/http';
+import { OpendialogComponent } from './components/formulario/opendialog/opendialog.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     InicioComponent,
     CasosJuridicosComponent,
-    FormularioComponent
+    FormularioComponent,
+    OpendialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutes,
     ReactiveFormsModule
   ],
+  entryComponents:[OpendialogComponent],
   providers: [CasosJuridicosService],
   bootstrap: [AppComponent]
 })

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { CasosJuridicosService } from 'src/app/core/services/casos-juridicos.service';
 import { ClientesService } from 'src/app/core/services/clientes.service';
 import { Formulario } from '../../core/interfaces/formulario.interface';
 import { Pattern } from '../../core/pattern/pattern';
+import { MatDialog } from '@angular/material';
+import { OpendialogComponent } from './opendialog/opendialog.component';
 
 @Component({
   selector: 'app-formulario',
@@ -17,15 +19,19 @@ export class FormularioComponent implements OnInit {
   formularioCliente: FormGroup;
   caso: any;
   constructor(private formBuilder: FormBuilder,
-              private activatedRoute: ActivatedRoute,
-              private casosJuridicosServices: CasosJuridicosService,
-              private clientesService: ClientesService) {
+    private activatedRoute: ActivatedRoute,
+    private casosJuridicosServices: CasosJuridicosService,
+    private clientesService: ClientesService,
+    public dialog: MatDialog, private router: Router) {
     this.formularioCliente = this.formBuilder.group({
       nombres: ['', [Validators.required, Validators.pattern(Pattern.regxDatosPrimarios)]],
       celular: ['', [Validators.required]],
-      correo: ['', [Validators.required,Validators.pattern(Pattern.regxCorreo)]],
+      correo: ['', [Validators.required, Validators.pattern(Pattern.regxCorreo)]],
       descripcion: ['', [Validators.required]]
     });
+  }
+
+  ngOnInit() {
     this.activatedRoute.params.subscribe(parametros => {
       this.casosJuridicosServices.getCasosJuridicos()
         .subscribe(data => {
@@ -33,15 +39,19 @@ export class FormularioComponent implements OnInit {
             if (element !== null) {
               if (element.codigo === parametros.codigo) {
                 this.caso = element;
+                console.log('caso>>>', this.caso);
               }
             }
           });
         });
     });
-  }
 
-  ngOnInit() {
-
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
   }
 
 
@@ -51,11 +61,15 @@ export class FormularioComponent implements OnInit {
       celular: this.formularioCliente.get('celular').value,
       correo: this.formularioCliente.get('correo').value,
       descripcion: this.formularioCliente.get('descripcion').value,
-      codigoCaso: ''
+      codigoCaso: this.caso.codigo
     };
-    // console.log(cliente);
     this.clientesService.insertClient(cliente).subscribe(data => {
-      console.log(data)
+      console.log('cliente>>', data);
+      const dialogRef = this.dialog.open(OpendialogComponent);
+      dialogRef.afterClosed().subscribe(result => {
+        this.formularioCliente.reset();
+        this.router.navigate(['/']);
+      });
     });
   }
 }
