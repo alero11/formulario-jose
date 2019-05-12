@@ -19,15 +19,22 @@ export class FormularioComponent implements OnInit {
   formularioCliente: FormGroup;
   caso: any;
   constructor(private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private casosJuridicosServices: CasosJuridicosService,
-    private clientesService: ClientesService,
-    public dialog: MatDialog, private router: Router) {
+              private activatedRoute: ActivatedRoute,
+              private casosJuridicosServices: CasosJuridicosService,
+              private clientesService: ClientesService,
+              public dialog: MatDialog,
+              private router: Router) {
     this.formularioCliente = this.formBuilder.group({
       nombres: ['', [Validators.required, Validators.pattern(Pattern.regxDatosPrimarios)]],
       celular: ['', [Validators.required]],
       correo: ['', [Validators.required, Validators.pattern(Pattern.regxCorreo)]],
       descripcion: ['', [Validators.required]]
+    });
+    this.router.events.subscribe((evt) => {
+      // if (!(evt instanceof NavigationEnd)) {
+      //   return;
+      // }
+      window.scrollTo(0, 0);
     });
   }
 
@@ -64,7 +71,6 @@ export class FormularioComponent implements OnInit {
       codigoCaso: this.caso.codigo
     };
     this.clientesService.insertClient(cliente).subscribe(data => {
-      console.log('cliente>>', data);
       const dialogRef = this.dialog.open(OpendialogComponent);
       dialogRef.afterClosed().subscribe(result => {
         this.formularioCliente.reset();

@@ -1,0 +1,28 @@
+<div class="centrar">
+    <div class="form-signin">
+        <img class="mb-4" src="assets/images/logo.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">
+            LLanos & Asociados
+        </h1>
+        <form [formGroup]="formLogin">
+            <div class="form-group mt-2">
+                <mat-form-field class="full">
+                    <input matInput placeholder="usuario *" maxlength="20" formControlName="usuario">
+                </mat-form-field>
+            </div>
+            <div class="form-group mt-2">
+                <mat-form-field class="full">
+                    <input matInput placeholder="contraseña *" type="password" maxlength="20" formControlName="contrasenia">
+                </mat-form-field>
+            </div>
+        </form>
+        <mat-error *ngIf="!validaContrasena">
+            ¡Usuario y contraseña incorrectos!
+        </mat-error>
+        <div class="mt-4">
+            <button class="btn btn-primary btn-block" type="submit" (click)="iniciarSesion()">
+        Iniciar Sesión
+      </button>
+        </div>
+    </div>
+</div>

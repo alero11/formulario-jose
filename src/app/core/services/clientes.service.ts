@@ -23,4 +23,8 @@ export class ClientesService {
     const body = JSON.stringify(formulario);
     return this.http.post(`${environment.clientesUrl}`, body, httpOptions);
   }
+
+  getClients() {
+    return this.http.get<Array<Formulario>>(`${environment.clientesUrl}`);
+  }
 }

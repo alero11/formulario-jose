@@ -1,0 +1,42 @@
+<div class="p-3 mb-4 bg-white border-bottom shadow-sm text-center">
+    <h5 class="my-0 mr-md-auto font-weight-normal">
+        <svg class="bd-placeholder-img rounded-circle" width="50" height="50" focusable="false" aria-label="Placeholder: 140x140">
+      <image xlink:href="assets/images/logo.jpg" height="50" width="50" />
+    </svg> Llanos & Asociados
+    </h5>
+</div>
+<div class="row">
+    <div class="col-md-4 col-xl-4">
+        <mat-card class="btn btn-light mb-4" (click)="mostrarClientes(item.codigo)" *ngFor="let item of casosJuridicos">
+            <mat-card-header>
+                <div mat-card-avatar><img src="assets/images/{{item.codigo}}.png" class="img-fluid" /></div>
+                <mat-card-subtitle class="text-left">{{item.titulo}} <i class="fas fa-angle-double-right"></i>
+                </mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <div class="col-md-8 col-xl-4" *ngIf="mostrarCliente">
+        <h3>{{casoJuridico.titulo}}</h3>
+
+        <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="celular">
+                <th mat-header-cell *matHeaderCellDef> Celular </th>
+                <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="correo">
+                <th mat-header-cell *matHeaderCellDef> Correo </th>
+                <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

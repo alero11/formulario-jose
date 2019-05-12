@@ -13,7 +13,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { CasosJuridicosComponent } from './components/casos-juridicos/casos-juridicos.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { CasosJuridicosService } from './core/services/casos-juridicos.service';
-
+import { AdministradorModule } from './components/administrador/administrador.module';
 // servicios
 import { HttpClientModule } from '@angular/common/http';
 import { OpendialogComponent } from './components/formulario/opendialog/opendialog.component';
@@ -35,9 +35,10 @@ import { OpendialogComponent } from './components/formulario/opendialog/opendial
     MaterialModule,
     HttpClientModule,
     AppRoutes,
+    AdministradorModule,
     ReactiveFormsModule
   ],
-  entryComponents:[OpendialogComponent],
+  entryComponents: [OpendialogComponent],
   providers: [CasosJuridicosService],
   bootstrap: [AppComponent]
 })
