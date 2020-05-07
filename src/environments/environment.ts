@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   casosJuridicosUrl: 'https://formularioapp-b7b58.firebaseio.com/casos.json',
-  clientesUrl: 'https://formularioapp-b7b58.firebaseio.com/clientes.json'
+  clientesUrl: 'https://formularioapp-b7b58.firebaseio.com/clientes.json',
+  envioMensaje: 'http://localhost:3000/sendmail'
 };
 
 /*

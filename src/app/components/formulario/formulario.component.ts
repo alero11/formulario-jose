@@ -7,6 +7,7 @@ import { Formulario } from '../../core/interfaces/formulario.interface';
 import { Pattern } from '../../core/pattern/pattern';
 import { MatDialog } from '@angular/material';
 import { OpendialogComponent } from './opendialog/opendialog.component';
+import { MensajeService } from '../../core/services/mensaje.service';
 
 @Component({
   selector: 'app-formulario',
@@ -22,6 +23,7 @@ export class FormularioComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private casosJuridicosServices: CasosJuridicosService,
               private clientesService: ClientesService,
+              private mensejeService: MensajeService,
               public dialog: MatDialog,
               private router: Router) {
     this.formularioCliente = this.formBuilder.group({
@@ -73,8 +75,13 @@ export class FormularioComponent implements OnInit {
     this.clientesService.insertClient(cliente).subscribe(data => {
       const dialogRef = this.dialog.open(OpendialogComponent);
       dialogRef.afterClosed().subscribe(result => {
-        this.formularioCliente.reset();
-        this.router.navigate(['/']);
+        this.mensejeService.sendMessage(cliente).subscribe(resultado => {
+          if(resultado.accepted){
+            this.formularioCliente.reset();
+            this.router.navigate(['/']);  
+          }          
+        });
+        
       });
     });
   }
